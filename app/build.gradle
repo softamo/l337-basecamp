@@ -1,0 +1,31 @@
+plugins {
+    id("io.micronaut.library") version "3.7.5"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+}
+
+version = "0.1"
+group = "com.softamo"
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation("io.micronaut.chatbots:micronaut-chatbots-basecamp-lambda:1.0.0-SNAPSHOT")
+    runtimeOnly("ch.qos.logback:logback-classic")
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+micronaut {
+    runtime("lambda_java")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.softamo.bots.basecamp.l337.*")
+    }
+}

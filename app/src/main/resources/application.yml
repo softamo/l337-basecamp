@@ -1,0 +1,8 @@
+micronaut:
+  application:
+    name: l3-37
+---
+chatbots:
+  basecamp:
+    bots:
+      l337:
